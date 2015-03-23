@@ -5,21 +5,8 @@ var gulp = require('gulp'),
     del = require('del'),
     runSequence = require('run-sequence'),
     connect = $.connectMulti,
-    wiredep = require('wiredep').stream,
-    devServer = connect(),
-    proServer = connect();
-
-gulp.task('connect-dev', devServer.server({
-    root: ['src'],
-    port: 8989,
-    livereload: true
-}));
-
-gulp.task('connect-pro', proServer.server({
-    root: ['dist'],
-    port: 9090,
-    livereload: true
-}));
+    wiredep = require('wiredep').stream;
+var liverelead = require('gulp-livereload');
 
 gulp.task('clean', function(cb) {
     del(['dist/'], cb);
@@ -97,10 +84,10 @@ gulp.task('wiredep', function() {
 
 gulp.task('refresh', ['scripts'], function() {
     gulp.src('dist/scripts/app.js')
-        .pipe(devServer.reload());
+        .pipe(livereload());
 });
 
-gulp.task('watch', ['connect-dev'], function() {
+gulp.task('watch', function() {
     gulp.watch([
         'src/*.html',
         'src/assets/styles/*.css',
@@ -109,7 +96,7 @@ gulp.task('watch', ['connect-dev'], function() {
         'src/app/**/*.js'
     ], function(event) {
         return gulp.src(event.path)
-                .pipe(devServer.reload());
+                .pipe(livereload());
     });
 
     gulp.watch(['src/app/*.js', 'src/app/**/*.js'], ['refresh']);
