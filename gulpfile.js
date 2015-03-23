@@ -95,21 +95,8 @@ gulp.task('wiredep', function() {
         .pipe(gulp.dest('src'));
 });
 
-gulp.task('browserify', function() {
-    return gulp.src(['src/app/app.js'])
-            .pipe($.browserify({
-                transform: ['reactify'],
-                extensions: ['.jsx']
-            }))
-            .on('prebundle', function(bundler) {
-                bundler.require('react');
-            })
-            .pipe(gulp.dest('src/scripts/'))
-            .pipe($.size());
-});
-
-gulp.task('refresh', ['browserify'], function() {
-    gulp.src('src/scripts/app.js')
+gulp.task('refresh', ['scripts'], function() {
+    gulp.src('dist/scripts/app.js')
         .pipe(devServer.reload());
 });
 
@@ -129,7 +116,7 @@ gulp.task('watch', ['connect-dev'], function() {
     gulp.watch('bower.json', ['wiredep']);
 });
 
-gulp.task('development', ['browserify'], function() {
+gulp.task('development', ['scripts'], function() {
     gulp.start('watch');
 });
 
