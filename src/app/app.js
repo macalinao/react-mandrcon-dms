@@ -1,20 +1,11 @@
-/** @jsx React.DOM */
-
-'use strict';
-
 var React = require('react');
 var Fluxxor = require('fluxxor');
 
-var ExampleApp = React.createClass({
-  render: function() {
-    return (
-      <div>
-        <h2>Hello, World</h2>
-      </div>
-    );
-  }
-});
+var stores = {};
+var actions = {};
 
-React.render(
-  <ExampleApp />, document.getElementById('app')
-);
+var flux = new Fluxxor.Flux(stores, actions);
+
+var Application = require('./components/Application');
+
+React.render(<Application />, document.getElementById('app'));
