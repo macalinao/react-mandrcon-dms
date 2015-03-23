@@ -2,24 +2,19 @@
 
 'use strict';
 
-var React = require('react'),
-    ExampleApp;
+var React = require('react');
+var Fluxxor = require('fluxxor');
 
-ExampleApp = React.createClass({
-    render: function() {
-        return (
-        	/*jshint ignore:start */
-            <div>
-            	<h2>Hello, World</h2>
-            </div>
-            /*jshint ignore:end */
-        );
-    }
+var ExampleApp = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <h2>Hello, World</h2>
+      </div>
+    );
+  }
 });
 
 React.render(
-    /*jshint ignore:start */
-    <ExampleApp />,
-    /*jshint ignore:end */
-    document.getElementById('app')
+  <ExampleApp />, document.getElementById('app')
 );

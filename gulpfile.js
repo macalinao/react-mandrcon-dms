@@ -25,12 +25,6 @@ gulp.task('clean', function(cb) {
     del(['dist/'], cb);
 });
 
-gulp.task('lint', function() {
-    return gulp.src(['src/app/*.js', 'src/app/**/*.js'])
-            .pipe($.jshint('.jshintrc'))
-            .pipe($.jshint.reporter('jshint-stylish'));
-});
-
 gulp.task('robots', function() {
     gulp.src('src/robots.txt')
         .pipe(gulp.dest('dist/'));
@@ -63,7 +57,7 @@ gulp.task('styles', function() {
 
 gulp.task('base', ['robots', 'static', 'config', 'fonts', 'images', 'styles']);
 
-gulp.task('scripts', ['lint'], function() {
+gulp.task('scripts', function() {
     return gulp.src(['src/app/app.js'])
             .pipe($.browserify({
                 transform: ['reactify'],
@@ -101,7 +95,7 @@ gulp.task('wiredep', function() {
         .pipe(gulp.dest('src'));
 });
 
-gulp.task('browserify', ['lint'], function() {
+gulp.task('browserify', function() {
     return gulp.src(['src/app/app.js'])
             .pipe($.browserify({
                 transform: ['reactify'],
