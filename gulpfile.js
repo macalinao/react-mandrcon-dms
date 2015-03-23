@@ -6,7 +6,7 @@ var gulp = require('gulp'),
     runSequence = require('run-sequence'),
     connect = $.connectMulti,
     wiredep = require('wiredep').stream;
-var liverelead = require('gulp-livereload');
+var livereload = require('gulp-livereload');
 
 gulp.task('clean', function(cb) {
     del(['dist/'], cb);
@@ -83,17 +83,16 @@ gulp.task('wiredep', function() {
 });
 
 gulp.task('refresh', ['scripts'], function() {
-    gulp.src('dist/scripts/app.js')
+    return gulp.src('dist/scripts/app.js')
         .pipe(livereload());
 });
 
 gulp.task('watch', function() {
+    livereload.listen();
     gulp.watch([
         'src/*.html',
         'src/assets/styles/*.css',
-        'src/assets/images/*',
-        'src/app/*.js',
-        'src/app/**/*.js'
+        'src/assets/images/*'
     ], function(event) {
         return gulp.src(event.path)
                 .pipe(livereload());
@@ -101,18 +100,6 @@ gulp.task('watch', function() {
 
     gulp.watch(['src/app/*.js', 'src/app/**/*.js'], ['refresh']);
     gulp.watch('bower.json', ['wiredep']);
-});
-
-gulp.task('development', ['scripts'], function() {
-    gulp.start('watch');
-});
-
-gulp.task('build', ['compress'], function() {
-    gulp.start('connect-pro');
-});
-
-gulp.task('production', ['clean'], function() {
-    gulp.start('build');
 });
 
 gulp.task('dist', function(cb) {
