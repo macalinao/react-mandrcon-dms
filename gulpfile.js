@@ -2,6 +2,8 @@
 
 var gulp = require('gulp'),
     $ = require('gulp-load-plugins')(),
+    del = require('del'),
+    runSequence = require('run-sequence'),
     connect = $.connectMulti,
     wiredep = require('wiredep').stream,
     devServer = connect(),
@@ -19,9 +21,8 @@ gulp.task('connect-pro', proServer.server({
     livereload: true
 }));
 
-gulp.task('clean', function() {
-    return gulp.src(['dist'], {read: false})
-            .pipe($.rimraf());
+gulp.task('clean', function(cb) {
+    del(['dist/'], cb);
 });
 
 gulp.task('lint', function() {
@@ -144,4 +145,8 @@ gulp.task('build', ['compress'], function() {
 
 gulp.task('production', ['clean'], function() {
     gulp.start('build');
+});
+
+gulp.task('dist', function(cb) {
+    runSequence('clean', 'compress', cb);
 });
