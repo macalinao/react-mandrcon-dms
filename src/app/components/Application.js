@@ -1,4 +1,6 @@
 var React = require('react');
+var Router = require('react-router');
+var { RouteHandler } = Router;
 
 var Navbar = require('./Navbar');
 
@@ -7,7 +9,9 @@ var Application = module.exports = React.createClass({
     return (
       <div>
         <Navbar />
-        <h2>Hello, World</h2>
+        <div className="container">
+          <RouteHandler />
+        </div>
       </div>
     );
   }
