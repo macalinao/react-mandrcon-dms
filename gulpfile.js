@@ -87,7 +87,7 @@ gulp.task('refresh', ['scripts'], function() {
         .pipe(livereload());
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', ['html'], function() {
     livereload.listen();
     gulp.watch([
         'src/*.html',
