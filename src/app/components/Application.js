@@ -8,9 +8,7 @@ export default React.createClass({
     return (
       <div>
         <Navbar />
-        <div className="container">
-          <RouteHandler />
-        </div>
+        <RouteHandler />
       </div>
     );
   }
