@@ -8,12 +8,12 @@ import Application from './components/Application';
 import Home from './components/Home';
 import Login from './components/Login';
 
-var stores = {};
-var actions = {};
+let stores = {};
+let actions = {};
 
-var flux = new Fluxxor.Flux(stores, actions);
+let flux = new Fluxxor.Flux(stores, actions);
 
-var routes = (
+let routes = (
   <Route handler={Application} path="/">
     <DefaultRoute handler={Home} />
     <Route handler={Login} path="/login" />
