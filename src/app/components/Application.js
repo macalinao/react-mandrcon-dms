@@ -1,11 +1,10 @@
-var React = require('react');
-var Router = require('react-router');
-var { RouteHandler } = Router;
+import React from 'react';
+import { RouteHandler } from 'react-router';
 
-var Navbar = require('./Navbar');
+import Navbar from './Navbar';
 
-var Application = module.exports = React.createClass({
-  render: function() {
+export default React.createClass({
+  render() {
     return (
       <div>
         <Navbar />

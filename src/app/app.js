@@ -7,6 +7,7 @@ import Router, { Route, DefaultRoute } from 'react-router';
 import Application from './components/Application';
 import Home from './components/Home';
 import Login from './components/Login';
+import Admin, { ManageCases } from './components/admin/'
 
 let stores = {};
 let actions = {};
@@ -16,7 +17,10 @@ let flux = new Fluxxor.Flux(stores, actions);
 let routes = (
   <Route handler={Application} path="/">
     <DefaultRoute handler={Home} />
-    <Route handler={Login} path="/login" />
+    <Route name="login" handler={Login} />
+    <Route name="admin" handler={Admin} >
+      <Route name="manage-cases" handler={ManageCases} />
+    </Route>
   </Route>
 );
 
