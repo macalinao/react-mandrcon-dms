@@ -7,11 +7,11 @@ export default React.createClass({
       <Grid>
         <Row>
           <h1>Manage Cases</h1>
-          <Button bsStyle="success">Add Cases</Button>
         </Row>
         <Row>
           <Col md={8}>
-            <h2>Overview</h2>
+            <h2>Current Cases</h2>
+            <Button bsStyle="success"><i className="fa fa-plus"></i>&nbsp;Add Cases</Button>
             <h3>Unassigned</h3>
             <h3>Assigned</h3>
           </Col>
