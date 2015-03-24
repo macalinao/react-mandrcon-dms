@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-let Login = module.exports = React.createClass({
+export default React.createClass({
   render() {
     return (
       <div className="col-md-6">

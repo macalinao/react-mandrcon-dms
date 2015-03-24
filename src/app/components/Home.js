@@ -1,6 +1,6 @@
 import React from 'react';
 
-var Home = module.exports = React.createClass({
+export default React.createClass({
   render() {
     return (
       <h2>Home</h2>
