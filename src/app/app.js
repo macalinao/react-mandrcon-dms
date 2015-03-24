@@ -1,19 +1,22 @@
-var React = require('react');
-var Fluxxor = require('fluxxor');
-var Router = require('react-router');
-var { Route, DefaultRoute } = Router;
+// Libraries
+import React from 'react';
+import Fluxxor from 'fluxxor';
+import Router, { Route, DefaultRoute } from 'react-router';
+
+// Components
+import Application from './components/Application';
+import Home from './components/Home';
+import Login from './components/Login';
 
 var stores = {};
 var actions = {};
 
 var flux = new Fluxxor.Flux(stores, actions);
 
-var Application = require('./components/Application');
-var Home = require('./components/Home');
-
 var routes = (
   <Route handler={Application} path="/">
     <DefaultRoute handler={Home} />
+    <Route handler={Login} path="/login" />
   </Route>
 );
 

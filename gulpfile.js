@@ -47,7 +47,7 @@ gulp.task('base', ['robots', 'static', 'config', 'fonts', 'images', 'styles']);
 gulp.task('scripts', function() {
     return gulp.src(['src/app/app.js'])
             .pipe($.browserify({
-                transform: ['reactify', 'babelify'],
+                transform: ['babelify', 'reactify'],
                 extensions: ['.jsx']
             }))
             .on('prebundle', function(bundler) {
