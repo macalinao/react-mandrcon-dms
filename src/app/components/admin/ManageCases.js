@@ -6,7 +6,9 @@ export default React.createClass({
     return (
       <Grid>
         <Row>
-          <h1>Manage Cases</h1>
+          <Col md={12}>
+            <h1>Manage Cases</h1>
+          </Col>
         </Row>
         <Row>
           <Col md={8}>
