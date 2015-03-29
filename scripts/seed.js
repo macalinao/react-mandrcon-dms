@@ -6,20 +6,21 @@ import { Case, User } from '../lib/models';
 
 db.connect();
 
-let users = [{
-  username: 'alayba',
-  password: 'mandrcon'
-}, {
-  username: 'bortega',
-  password: 'password'
-}, {
-  username: 'admin',
-  password: 'admin',
-  admin: true
-}];
+let users = [];
+for (let i = 0; i < 5; i++) {
+  let name = faker.name.findName();
+  let u = name.toLowerCase().split(' ');
+  let uname = u[0].charAt(0) + u[1];
+
+  users.push({
+    username: uname,
+    password: faker.internet.password(),
+    name: name
+  });
+}
 
 let cases = [];
-for (var i = 0; i < 100; i++) {
+for (let i = 0; i < 100; i++) {
   let dosA = faker.date.between('1/1/2010', '1/1/2014');
   let dosB = faker.date.between(dosA, '1/1/2014');
   let dos = moment(dosA).format('MM/DD/YYYY') + ' - ' + moment(dosB).format('MM/DD/YYYY');
@@ -43,7 +44,5 @@ for (var i = 0; i < 100; i++) {
     body: faker.lorem.paragraphs()
   });
 }
-
-console.log(cases);
 
 db.close();
