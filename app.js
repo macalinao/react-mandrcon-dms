@@ -1,10 +1,14 @@
-var express = require('express');
+'use strict';
+const express = require('express');
 
-var app = express();
+const db = require('./lib/db');
+db.connect();
+
+let app = express();
 
 app.use(express.static(__dirname + '/dist/'));
 
-var port = process.env.PORT || 3000;
+let port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log('Listening on port ' + port);
 });

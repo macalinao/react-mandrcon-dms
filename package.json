@@ -1,6 +1,9 @@
 {
   "name": "mandrcon-dms",
   "version": "0.0.1",
+  "scripts": {
+    "start": "iojs app"
+  },
   "devDependencies": {
     "babelify": "^5.0.4",
     "del": "^1.1.1",
@@ -30,6 +33,7 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "express": "^4.12.3"
+    "express": "^4.12.3",
+    "mongoose": "^4.0.0"
   }
 }
