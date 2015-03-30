@@ -36,7 +36,7 @@ function createUsers() {
 
 function createAdmins(users) {
   let admins = [];
-  for (let i = 0; i < USERS; i++) {
+  for (let i = 0; i < ADMINS; i++) {
     let name = faker.name.findName();
     let u = name.toLowerCase().split(' ');
     let uname = u[0].charAt(0) + u[1];
@@ -44,7 +44,8 @@ function createAdmins(users) {
     admins.push({
       username: uname,
       password: 'admin',
-      name: name
+      name: name,
+      admin: true
     });
   }
 
