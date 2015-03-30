@@ -30,7 +30,10 @@ function createUsers() {
   }
 
   return P.map(users, (doc) => {
-    return (new User(doc)).save();
+    let user = new User(doc);
+    return user.hashPassword().then(() => {
+      return user.save();
+    });
   });
 }
 
@@ -50,7 +53,10 @@ function createAdmins(users) {
   }
 
   return P.map(admins, (doc) => {
-    return (new User(doc)).save();
+    let user = new User(doc);
+    return user.hashPassword().then(() => {
+      return user.save();
+    });
   }).then((admins) => {
     return [users, admins];
   });
