@@ -117,7 +117,9 @@ function createCases(users, admins) {
 }
 
 // Database stuff
+console.log('Connecting to database...');
 db.connect();
+console.log('Seeding database...');
 clearDB().then(createUsers).then(createAdmins).spread(createCases)
   .spread((users, admins, cases) => {
     db.close();
