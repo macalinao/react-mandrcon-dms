@@ -112,12 +112,20 @@ function createCases(users, admins) {
   return P.map(cases, (doc) => {
     return (new Case(doc)).save();
   }).then((cases) => {
-    return [cases, admins];
+    return [users, admins, cases];
   });
 }
 
 // Database stuff
 db.connect();
-clearDB().then(createUsers).then(createAdmins).spread(createCases).then((cases) => {
-  db.close();
-});
+clearDB().then(createUsers).then(createAdmins).spread(createCases)
+  .spread((users, admins, cases) => {
+    db.close();
+    console.log('Database seeded with the following:');
+    console.log('Users: ' + users.length);
+    console.log('Admins: ' + admins.length);
+    console.log('Cases: ' + cases.length);
+    console.log('Sample admin: ');
+    console.log('  Username: ' + faker.random.array_element(admins).username);
+    console.log('  Password: admin');
+  });
