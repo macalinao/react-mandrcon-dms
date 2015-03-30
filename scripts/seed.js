@@ -5,8 +5,9 @@ import moment from 'moment';
 import db from '../lib/db';
 import { Case, User } from '../lib/models';
 
-const USERS = 5;
-const CASES = 100;
+const USERS = 10;
+const ADMINS = 2;
+const CASES = 250;
 
 function clearDB() {
   return Case.remove({}).then(() => {
@@ -42,7 +43,7 @@ function createAdmins(users) {
 
     admins.push({
       username: uname,
-      password: faker.internet.password(),
+      password: 'admin',
       name: name
     });
   }
