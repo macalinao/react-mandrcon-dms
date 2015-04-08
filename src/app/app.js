@@ -7,7 +7,7 @@ import Router, { Route, DefaultRoute } from 'react-router';
 import Application from './components/Application';
 import Home from './components/Home';
 import Login from './components/Login';
-import Admin, { ManageCases } from './components/admin/'
+import Admin, { Cases } from './components/admin/'
 
 let stores = {};
 let actions = {};
@@ -19,7 +19,7 @@ let routes = (
     <DefaultRoute handler={Home} />
     <Route name="login" handler={Login} />
     <Route name="admin" handler={Admin} >
-      <Route name="manage-cases" handler={ManageCases} />
+      <Route name="cases" handler={Cases} />
     </Route>
   </Route>
 );

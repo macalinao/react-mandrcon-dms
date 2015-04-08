@@ -1,5 +1,6 @@
 import React from 'react';
 import { RouteHandler } from 'react-router';
+import { Grid } from 'react-bootstrap';
 
 import Navbar from './Navbar';
 
@@ -8,7 +9,9 @@ export default React.createClass({
     return (
       <div>
         <Navbar />
-        <RouteHandler />
+        <Grid>
+          <RouteHandler />
+        </Grid>
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { RouteHandler } from 'react-router';
 
-export { default as ManageCases } from './ManageCases';
+export { default as Cases } from './Cases';
 
 export default React.createClass({
   render() {

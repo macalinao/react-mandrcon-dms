@@ -1,10 +1,10 @@
 import React from 'react';
-import { Grid, Row, Col, Button, Table } from 'react-bootstrap';
+import { Row, Col, Button, Table } from 'react-bootstrap';
 
 export default React.createClass({
   render() {
     return (
-      <Grid>
+      <div>
         <Row>
           <Col md={12}>
             <h1>Manage Cases</h1>
@@ -21,7 +21,7 @@ export default React.createClass({
             <h2>Stats</h2>
           </Col>
         </Row>
-      </Grid>
+      </div>
     );
   }
 });
